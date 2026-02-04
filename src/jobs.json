@@ -111,6 +111,48 @@
         "contactPhone": "+1 (615) 151-9803"
       },
       "id": 8
+    },
+    {
+      "type": "Internship",
+      "title": "Charissa Key",
+      "description": "Est possimus enim e",
+      "salary": "$125K - $150K",
+      "location": "Eiusmod delectus qu",
+      "company": {
+        "name": "Mcdonald and Dunlap Traders",
+        "description": "Quibusdam Nam dolore",
+        "contactEmail": "cekusedom@mailinator.com",
+        "contactPhone": "+1 (963) 449-2452"
+      },
+      "id": 9
+    },
+    {
+      "type": "Full-Time",
+      "title": "Quyn Duffy",
+      "description": "Consequat Aliquid q",
+      "salary": "$70K - $80K",
+      "location": "Omnis vel vel tempor",
+      "company": {
+        "name": "Goff and Wiggins Trading",
+        "description": "Aut officia quis in ",
+        "contactEmail": "gexiparonu@mailinator.com",
+        "contactPhone": "+1 (582) 691-2468"
+      },
+      "id": 10
+    },
+    {
+      "type": "Internship",
+      "title": "Facki Don",
+      "description": "Consectetur autem s",
+      "salary": "$100K - $125K",
+      "location": "Natus mollit et cupi",
+      "company": {
+        "name": "Woodward Stokes Associates",
+        "description": "At temporibus in qua",
+        "contactEmail": "nilil@mailinator.com",
+        "contactPhone": "+1 (939) 528-9508"
+      },
+      "id": 11
     }
   ]
 }

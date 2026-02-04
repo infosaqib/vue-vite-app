@@ -1,7 +1,12 @@
 <script setup>
 import BackButton from "@/components/BackButton.vue";
 import { reactive } from "vue";
+import { useToast } from "vue-toastification";
+import { useRouter } from "vue-router";
 import axios from "axios";
+
+const toast = useToast();
+const router = useRouter();
 
 const form = reactive({
   type: "Full-Time",
@@ -33,11 +38,12 @@ const handleSubmit = async () => {
   };
 
   try {
- await axios.post("/api/jobs/", newJob);
- console.log('Job created successfully');
- 
-} catch (error) {
+    const res = await axios.post("/api/jobs/", newJob);
+    toast.success("Job Added Successfully");
+    router.push(`/jobs/${res.data.id}`);
+  } catch (error) {
     console.error("Error creating job: ", error);
+    toast.error("Job was not added");
   }
 };
 </script>
