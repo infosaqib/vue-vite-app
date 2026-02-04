@@ -1,0 +1,12 @@
+conditions
+- v-if (conditional rendering)
+- v-else
+- v-else-if
+v-for (rendering)
+v-bind (binding)
+Events
+v-model
+onMounted
+tailwindcss integration
+props
+components
