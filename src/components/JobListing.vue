@@ -18,6 +18,8 @@ const truncatedDesc = computed(() => {
 const toggleDesc = () => {
   showFullDescription.value = !showFullDescription.value;
 };
+
+
 </script>
 
 <template>

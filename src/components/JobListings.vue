@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, onMounted } from "vue";
+import { reactive, onMounted, ref, computed } from "vue";
 import jobListing from "@/components/JobListing.vue";
 import axios from "axios";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
@@ -17,6 +17,14 @@ const state = reactive({
   isLoading: true,
 });
 
+const search = ref();
+
+const filterJobs = computed(() => {
+  return state.jobs.filter((job) =>
+    job.title.toLowerCase().includes(search.value.toLowerCase()),
+  );
+});
+
 onMounted(async () => {
   try {
     const res = await axios.get("/api/jobs");
@@ -32,6 +40,16 @@ onMounted(async () => {
 <template>
   <section class="bg-green-50 px-4 py-10">
     <div class="container-xl lg:container m-auto">
+      <form>
+        <input
+          v-model="search"
+          type="search"
+          name=""
+          id=""
+          placeholder="search"
+          @input="filterJobs"
+        />
+      </form>
       <h2 class="text-3xl font-bold text-green-500 mb-6 text-center">
         Browse Jobs
       </h2>
@@ -40,7 +58,7 @@ onMounted(async () => {
       </div>
       <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <jobListing
-          v-for="job in state.jobs.slice(0, limit || state.jobs.length)"
+          v-for="job in filterJobs.slice(0, limit || filterJobs.length)"
           :key="job.id"
           :job="job"
         />
