@@ -17,13 +17,21 @@ const state = reactive({
   isLoading: true,
 });
 
-const search = ref();
+const search = ref("");
 
 const filterJobs = computed(() => {
-  return state.jobs.filter((job) =>
-    job.title.toLowerCase().includes(search.value.toLowerCase()),
+  if (!search.value) return state.jobs;
+
+  return state.jobs.filter(
+    (job) =>
+      job.title.toLowerCase().includes(search.value.toLowerCase()) ||
+      job.type.toLowerCase().includes(search.value.toLowerCase()),
   );
 });
+
+if (filterJobs.length > 0) {
+ 
+}
 
 onMounted(async () => {
   try {
@@ -46,8 +54,8 @@ onMounted(async () => {
           type="search"
           name=""
           id=""
-          placeholder="search"
-          @input="filterJobs"
+          class="px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium rounded-base ps-9 text-heading text-sm focus:ring-brand focus:border-brand block placeholder:text-body"
+          placeholder="Search Jobs..."
         />
       </form>
       <h2 class="text-3xl font-bold text-green-500 mb-6 text-center">
@@ -55,6 +63,12 @@ onMounted(async () => {
       </h2>
       <div v-if="state.isLoading" class="text-green-600 text-center py-6">
         <PulseLoader />
+      </div>
+      <div
+        v-else-if="filterJobs.length === 0"
+        class="text-gray-4 00 text-center py-6"
+      >
+        <p>No Jobs Found</p>
       </div>
       <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <jobListing
